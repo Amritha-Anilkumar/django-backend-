@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,11 +29,15 @@ SECRET_KEY = 'django-insecure-xt$2+=2c9xm!#-&hts^an5w(==&l=b4%4jxj@qm95y6#x=0td%
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'django-backend-3-x0nf.onrender.com',
-    'rad-haupia-85c9ce.netlify.app',
+    'your-backend.onrender.com',
+    'your-frontend.netlify.app',
     'localhost',
     '127.0.0.1'
 ]
+
+
+
+
 
 
 # Application definition
@@ -52,24 +59,23 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
-CORS_ALLOW_ALL_ORIGINS = False
+
+
 
 CORS_ALLOWED_ORIGINS = [
-    'https://rad-haupia-85c9ce.netlify.app',
-]
-INSTALLED_APPS += [
-    'corsheaders',
+    "https://your-frontend.netlify.app",
+    "http://localhost:3000"
 ]
 
-MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -95,13 +101,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'vyasayoga',
-        'USER':'root',
-        'PASSWORD':'Root'
-    }
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
+
 
 
 # Password validation

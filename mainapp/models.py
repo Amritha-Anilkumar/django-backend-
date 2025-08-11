@@ -4,7 +4,7 @@ from django.db import models
 class Register(models.Model):
     fname = models.CharField("First Name", max_length=30)
     lname = models.CharField("Last Name", max_length=30)
-    email = models.EmailField("Email", max_length=100,unique=True)
+    email = models.EmailField("Email", max_length=100)
     phone = models.CharField("Phone Number", max_length=15, blank=True, null=True)
     preference = models.CharField("Yoga Preference", max_length=100, default="Not Specified")
 
