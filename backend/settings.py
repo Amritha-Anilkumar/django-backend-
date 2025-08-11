@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-xt$2+=2c9xm!#-&hts^an5w(==&l=b4%4jxj@qm95y6#x=0td%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-backend-2-77gd.onrender.com', 'https://rad-haupia-85c9ce.netlify.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'django-backend-3-x0nf.onrender.com',
+    'rad-haupia-85c9ce.netlify.app',
+    'localhost',
+    '127.0.0.1'
+]
+
 
 
 
@@ -58,12 +64,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
     'https://rad-haupia-85c9ce.netlify.app',
 ]
+INSTALLED_APPS += [
+    'corsheaders',
+]
 
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
 
 ROOT_URLCONF = 'backend.urls'
 
