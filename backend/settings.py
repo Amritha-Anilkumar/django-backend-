@@ -29,11 +29,13 @@ SECRET_KEY = 'django-insecure-xt$2+=2c9xm!#-&hts^an5w(==&l=b4%4jxj@qm95y6#x=0td%
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'your-backend.onrender.com',
-    'your-frontend.netlify.app',
-    'localhost',
-    '127.0.0.1'
+    "django-backend-4-ete0.onrender.com",
+    "rad-haupia-85c9ce.netlify.app",
+    "localhost",
+    "127.0.0.1",
 ]
+
+
 
 
 
@@ -71,7 +73,7 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://your-frontend.netlify.app",
+    "https://rad-haupia-85c9ce.netlify.app",
     "http://localhost:3000"
 ]
 
@@ -101,12 +103,20 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default="postgresql://vyasayoga_user:BnaPsnMcTYkq9TtI3YdC5iRBVRznj5gj@dpg-d2cql79r0fns73e6t36g-a/vyasayoga"
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vyasayoga',
+        'USER': 'vyasayoga_user',
+        'PASSWORD': 'BnaPsnMcTYkq9TtI3YdC5iRBVRznj5gj',
+        'HOST': 'dpg-d2cql79r0fns73e6t36g-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
 
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://rad-haupia-85c9ce.netlify.app",
+    "https://django-backend-4-ete0.onrender.com",  
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
