@@ -91,7 +91,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 if os.environ.get('RENDER'):
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('postgresql://vyasayoga_user:BnaPsnMcTYkq9TtI3YdC5iRBVRznj5gj@dpg-d2cql79r0fns73e6t36g-a/vyasayoga'))
+        'default': dj_database_url.config(
+            default='postgresql://vyasayoga_user:BnaPsnMcTYkq9TtI3YdC5iRBVRznj5gj@dpg-d2cql79r0fns73e6t36g-a/vyasayoga'
+        )
     }
 else:
     DATABASES = {
