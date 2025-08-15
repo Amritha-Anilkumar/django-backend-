@@ -88,8 +88,3 @@ def get_galleryimages(request):
     return Response(serializer.data)
 
 
-def create_superuser(request):
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser("admin", "admin@example.com", "password123")
-        return HttpResponse("Superuser created")
-    return HttpResponse("Superuser already exists")

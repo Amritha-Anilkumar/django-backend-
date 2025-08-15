@@ -54,6 +54,7 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
      # Old frontend
     "https://inspiring-tarsier-943031.netlify.app",
+    "https://dashing-druid-1a2055.netlify.app",
     "https://tranquil-entremet-e30f43.netlify.app", # Current frontend
     "http://localhost:3000",                        # Local dev
 ]
@@ -61,7 +62,8 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://prismatic-otter-804c65.netlify.app",
     "https://inspiring-tarsier-943031.netlify.app",
-    "https://tranquil-entremet-e30f43.netlify.app"
+    "https://tranquil-entremet-e30f43.netlify.app",
+    "https://dashing-druid-1a2055.netlify.app",
 ]
 
 CORS_ALLOW_METHODS = [
