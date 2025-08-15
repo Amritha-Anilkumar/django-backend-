@@ -52,14 +52,16 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
-    "https://prismatic-otter-804c65.netlify.app",   # Old frontend
-    "https://inspiring-tarsier-943031.netlify.app", # Current frontend
+     # Old frontend
+    "https://inspiring-tarsier-943031.netlify.app",
+     "https://astounding-klepon-6a36cd.netlify.app" # Current frontend
     "http://localhost:3000",                        # Local dev
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://prismatic-otter-804c65.netlify.app",
     "https://inspiring-tarsier-943031.netlify.app",
+    "https://astounding-klepon-6a36cd.netlify.app"
 ]
 
 CORS_ALLOW_METHODS = [
