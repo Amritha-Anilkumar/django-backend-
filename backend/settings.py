@@ -54,14 +54,14 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
      # Old frontend
     "https://inspiring-tarsier-943031.netlify.app",
-    "https://astounding-klepon-6a36cd.netlify.app", # Current frontend
+    "https://tranquil-entremet-e30f43.netlify.app", # Current frontend
     "http://localhost:3000",                        # Local dev
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://prismatic-otter-804c65.netlify.app",
     "https://inspiring-tarsier-943031.netlify.app",
-    "https://astounding-klepon-6a36cd.netlify.app"
+    "https://tranquil-entremet-e30f43.netlify.app"
 ]
 
 CORS_ALLOW_METHODS = [
