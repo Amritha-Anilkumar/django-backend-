@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-xt$2+=2c9xm!#-&hts^an5w(==&l=b4%4jxj@qm95y6#x=0td%
 DEBUG = True
 ALLOWED_HOSTS = [
     "django-backend-7.onrender.com",
-    "prismatic-otter-804c65.netlify.app",
+    "strong-snickerdoodle-55a41e.netlify.app",
     '127.0.0.1',
     'localhost',
 ]
@@ -67,7 +67,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-    "https://prismatic-otter-804c65.netlify.app",
+    "https://strong-snickerdoodle-55a41e.netlify.app",
     "http://localhost:3000"
 ]
 
