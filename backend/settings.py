@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 import dj_database_url
-from corsheaders.defaults import default_headers 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -11,12 +10,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "django-backend-7.onrender.com",
-    "thriving-gumdrop-dd0510.netlify.app",
     "127.0.0.1",
     "localhost",
 ]
 
-# Apps
+# -------------------- INSTALLED APPS --------------------
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -25,15 +23,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third-party
     'corsheaders',
     'rest_framework',
+
+    # Local apps
     'mainapp',
 ]
 
-# Middleware
+# -------------------- MIDDLEWARE --------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware', 
+
+    # CORS middleware should be placed as high as possible
+    'corsheaders.middleware.CorsMiddleware',
+
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -43,15 +48,39 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ✅ CORS settings
+# -------------------- CORS & CSRF --------------------
+CORS_ALLOW_ALL_ORIGINS = False
+
 CORS_ALLOWED_ORIGINS = [
-    "https://thriving-gumdrop-dd0510.netlify.app",
-    "http://localhost:3000",
+    "https://prismatic-otter-804c65.netlify.app",   # Old frontend
+    "https://inspiring-tarsier-943031.netlify.app", # Current frontend
+    "http://localhost:3000",                        # Local dev
 ]
 
-# Allow Content-Type header for JSON POST
-CORS_ALLOW_HEADERS = list(default_headers) + [
-    'content-type',
+CSRF_TRUSTED_ORIGINS = [
+    "https://prismatic-otter-804c65.netlify.app",
+    "https://inspiring-tarsier-943031.netlify.app",
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -73,7 +102,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-# Database
+# -------------------- DATABASE CONFIG --------------------
 if os.environ.get('RENDER'):
     DATABASES = {
         'default': dj_database_url.config(
@@ -92,7 +121,7 @@ else:
         }
     }
 
-# Password validation
+# -------------------- PASSWORD VALIDATION --------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -100,13 +129,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization
+# -------------------- INTERNATIONALIZATION --------------------
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static & Media
+# -------------------- STATIC & MEDIA FILES --------------------
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -115,7 +144,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email
+# -------------------- EMAIL CONFIG --------------------
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
