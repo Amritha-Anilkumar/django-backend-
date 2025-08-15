@@ -54,7 +54,7 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
      # Old frontend
     "https://inspiring-tarsier-943031.netlify.app",
-     "https://astounding-klepon-6a36cd.netlify.app" # Current frontend
+    "https://astounding-klepon-6a36cd.netlify.app", # Current frontend
     "http://localhost:3000",                        # Local dev
 ]
 
