@@ -7,6 +7,8 @@ from django.utils.html import strip_tags
 from .serializers import RegisterSerializer,TeacherSerializer,GalleryImageSerializer
 from .models import Register,Teacher,GalleryImage
 from django.utils.html import strip_tags
+from django.contrib.auth.models import User
+from django.http import HttpResponse
 
 
 
@@ -84,3 +86,10 @@ def get_galleryimages(request):
     images = GalleryImage.objects.all()
     serializer = GalleryImageSerializer(images, many=True)
     return Response(serializer.data)
+
+
+def create_superuser(request):
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser("admin", "admin@example.com", "password123")
+        return HttpResponse("Superuser created")
+    return HttpResponse("Superuser already exists")
