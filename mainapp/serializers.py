@@ -7,11 +7,16 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TeacherSerializer(serializers.ModelSerializer):
+    photo = serializers.ImageField(use_url=True)  
+
     class Meta:
         model = Teacher
         fields = ['id', 'name', 'photo', 'specialization']
 
+
 class GalleryImageSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(use_url=True)
+
     class Meta:
         model = GalleryImage
         fields = ['id', 'image']
